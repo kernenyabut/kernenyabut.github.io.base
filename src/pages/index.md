@@ -1,5 +1,5 @@
 ---
-title: 'Kernen Yabut'
+title: 'Home'
 metaDesc: 'The groundwork for my personal website using the tutorial; Learn Eleventy From Scratch, by Piccalilli'
 layout: base
 intro:
