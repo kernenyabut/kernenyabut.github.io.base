@@ -1,184 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home | Personal Site of Kernen Yabut</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/assets/main.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/_site/img/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/_site/img/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/_site/img/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/src/img/favicon_io/site.webmanifest">
 
-    <link rel="stylesheet" href="/dist/app.css" />
+    <script>  
+      // Remove this script if you don't need the dark mode toggle  
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+        
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
 
-    
+      const toggleDarkMode = function(){
+        if (document.documentElement.classList.contains('dark')) {
+          document.documentElement.classList.remove('dark');
+          localStorage.theme = 'light';      
+        } else {
+          document.documentElement.classList.add('dark')
+          localStorage.theme = 'dark'
+        }
+      };   
 
-
-<meta name="description" content="Template for static site generator Eleventy with Boostrap 5 and SCSS/JS compilation via laravel-mix.">
-
-
-<meta property="og:site_name" content="Kernen Yabut">
-<meta property="og:title" content="Home">
-<meta property="og:description" content="Template for static site generator Eleventy with Boostrap 5 and SCSS/JS compilation via laravel-mix.">
-<meta property="og:url" content="http://localhost:8080/">
-<meta property="og:locale" content=""><meta property="og:image" content="http://localhost:8080/assets/images/open-graph/teaser.jpeg">
-
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Home">
-<meta name="twitter:description" content="Template for static site generator Eleventy with Boostrap 5 and SCSS/JS compilation via laravel-mix."><meta property="twitter:image" content="http://localhost:8080/assets/images/open-graph/teaser.jpeg">
-
-
-
-
-<link rel="icon" href="/assets/favicons/favicon.ico">
-
-
+      const forgetPref = function(){
+        localStorage.removeItem('theme')
+        window.location.reload()
+      }
+    </script>
 
   </head>
+  <body class="dark:bg-zinc-800 dark:text-white">
+    <nav class="flex items-center justify-between flex-wrap px-5 py-3 border-b gap-5 dark:border-zinc-900">
+  <a href="/" class="font-semibold text-xl tracking-tight">Kernen Yabut</a>
 
-  <body>
-    <!-- skiplinks -->
-    <a href="#main" class="visually-hidden-focusable">Skip to main content</a>
-
-    <div class="container py-4">
-  <header class="pb-3 mb-4 border-bottom">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container-fluid">
-        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-          <span class="fs-3">Kernen Yabut</span>
+  
+  <ul class="flex items-center gap-3 flex-wrap">
+    
+      <li class="inline">
+        <a
+          href="/"
+          class="uppercase text-sm py-1 px-2 rounded inline-block
+          
+            bg-black text-white
+          ">
+          Home
         </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+      </li>
+    
+      <li class="inline">
+        <a
+          href="/work/"
+          class="uppercase text-sm py-1 px-2 rounded inline-block
+          
+            text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700
+          ">
+          Work
+        </a>
+      </li>
+    
+      <li class="inline">
+        <a
+          href="/blog/"
+          class="uppercase text-sm py-1 px-2 rounded inline-block
+          
+            text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700
+          ">
+          Blog
+        </a>
+      </li>
+    
+      <li class="inline">
+        <a
+          href="/contact/"
+          class="uppercase text-sm py-1 px-2 rounded inline-block
+          
+            text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700
+          ">
+          Contact
+        </a>
+      </li>
+    
 
+  </ul>
 
+  <button class="text-zinc-700  hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-lg text-sm p-2.5" onclick="toggleDarkMode()" id="theme-toggle" type="button">
+    <svg id="theme-toggle-dark-icon" class="w-5 h-5 dark:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" > <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" ></path> </svg>
+    <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden dark:block text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" > <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd" ></path> </svg>
+  </button>
 
+  
+  
 
+</nav>
 
-<ul class="navbar-nav ms-auto"><li class="nav-item">
-            <a class="nav-link active"
-                href="#main"
-                aria-current="page" >
-                Home
-            </a></li><li class="nav-item">
-            <a class="nav-link"
-                href="/pages/about/"
-                >
-                About
-            </a></li><li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle"
-                href="/pages/examples/"
-                  role="button" data-bs-toggle="dropdown" aria-expanded="false"
-                id="dropdown-604927">
-                Examples <span class="visually-hidden">Toggle Dropdown Examples</span>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdown-604927">
-                <li>
-                    <a class="dropdown-item" href="/pages/examples/"><!-- Examples-->Overview</a>
-                </li><li>
-    <a class="dropdown-item" href=" /pages/examples/first/">
-    First example
-    </a>
-</li><li>
-    <a class="dropdown-item" href=" /pages/examples/second/">
-    Second example
-    </a>
-</li></ul></li><li class="nav-item">
-            <a class="nav-link"
-                href="/pages/another_site/"
-                >
-                Another Site
-            </a></li></ul>
-
-
-</div>
-      </div>
-    </nav>
-  </header>
-</div>
-
-
-    <main id="main">
-      <div class="container py-4">
-        
-<div class="container">
-  <header class="jumbotron my-4">
-    <h1 class="display-3">Welcome to My Personal Website!</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <a href="#" class="btn btn-primary btn-lg">Learn more</a>
-  </header>
-
-  <div class="row text-center">
-    <div class="col-lg-3 col-md-6 mb-4">
-      <div class="card">
-        <img class="card-img-top" src="https://via.placeholder.com/150" alt="">
-        <div class="card-body">
-          <h4 class="card-title">Project 1</h4>
-          <p class="card-text">Description of the project.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-6 mb-4">
-      <div class="card">
-        <img class="card-img-top" src="https://via.placeholder.com/150" alt="">
-        <div class="card-body">
-          <h4 class="card-title">Project 2</h4>
-          <p class="card-text">Description of the project.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-6 mb-4">
-      <div class="card">
-        <img class="card-img-top" src="https://via.placeholder.com/150" alt="">
-        <div class="card-body">
-          <h4 class="card-title">Project 3</h4>
-          <p class="card-text">Description of the project.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-6 mb-4">
-      <div class="card">
-        <img class="card-img-top" src="https://via.placeholder.com/150" alt="">
-        <div class="card-body">
-          <h4 class="card-title">Project 4</h4>
-          <p class="card-text">Description of the project.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
-        </div>
-      </div>
-    </div>
+    <main class="p-12 ">
+      
+      
+<div class="space-y-8">
+  <h2 class="text-2xl uppercase bold mb-8">Hello, I'm Kernen Yabut.</h2>
+  <div>
+    <p>I'm an aspiring software developer and a graduate of Conestoga College's Computer Programmer/Analyst program. With an  technology </p>
+    <p></p>
   </div>
+
+
+  <a href="https://github.com/tomreinert/minimal-11ty-tailwind-starter" class="inline-block uppercase rounded bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white text-sm">Download on github</a>
 </div>
 
-<!-- for debug: {&quot;title&quot;:&quot;Kernen Yabut&quot;,&quot;description&quot;:&quot;Personal website of Kernen Yabut. Using Eleventy and Bootstrap. Template by Matthias Andrasch.&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;baseUrl&quot;:&quot;http://localhost:8080&quot;,&quot;pathPrefix&quot;:&quot;/&quot;} {&quot;date&quot;:&quot;2024-06-10T21:27:01.780Z&quot;,&quot;inputPath&quot;:&quot;./src/index.njk&quot;,&quot;fileSlug&quot;:&quot;&quot;,&quot;filePathStem&quot;:&quot;/index&quot;,&quot;outputFileExtension&quot;:&quot;html&quot;,&quot;templateSyntax&quot;:&quot;njk&quot;,&quot;url&quot;:&quot;/&quot;,&quot;outputPath&quot;:&quot;_site/index.html&quot;} {&quot;lang&quot;:&quot;en&quot;,&quot;title&quot;:&quot;Home&quot;,&quot;image&quot;:&quot;/assets/images/open-graph/teaser.jpeg&quot;,&quot;description&quot;:&quot;Template for static site generator Eleventy with Boostrap 5 and SCSS/JS compilation via laravel-mix.&quot;}-->
-
-      </div>
     </main>
-
-    <footer class="container">
-  <p class="float-end"><a href="#">Back to top</a></p>
-  <p>
-    <a href="https://github.com/kernenyabut">GitHub</a> ·
-    <a href="/pages/imprint">Imprint</a> · <a href="/pages/privacy">Privacy</a>
-  </p>
-</footer>
-
-    <script type="text/javascript" src="/dist/app.js"></script>
+    <script src="/assets/main.js"></script>
   </body>
 </html>

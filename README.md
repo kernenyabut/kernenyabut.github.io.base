@@ -1,95 +1,144 @@
-# 11ty-plain-bootstrap5
+# Minimal 11ty Starter
 
-[![Build and Deploy](https://github.com/mandrasch/11ty-plain-bootstrap5/actions/workflows/build-deploy.yaml/badge.svg)](https://github.com/mandrasch/11ty-plain-bootstrap5/actions/workflows/build-deploy.yaml)
+[![Screenshot of the Demo Website](https://github.com/tomreinert/minimal-11ty-tailwind-starter/assets/3286735/87949d5e-dc9a-4f12-bab0-b854f7e78dd0)](https://clever-newton-cbb08a.netlify.app)
 
-Minimalistic template for the awesome static site generator [Eleventy/11ty](https://www.11ty.dev/), just
+A *very* minimal [eleventy](https://11ty.io/) starter using [Tailwind CSS](https://tailwindcss.com/) for styling.
 
-- [Bootstrap 5](https://www.npmjs.com/package/bootstrap) (via npm)
-- [Laravel Mix](https://www.npmjs.com/package/laravel-mix)\* for SCSS / JS compilation (incl. Autoprefixer)
+It features a smart navigation component that sets active states automatically.
 
-_\* Laravel Mix is a wrapper around webpack, it is purely NodeJS, no PHP involved ;-)_
+For beginners and/or when you need a simple static site and don't want to duplicate your navigation header and set active states for the nth time.
 
-Plugins used (you don't have to keep them):
+## Features
+🦴 As minimal as possible  
+⚡️ Active states in the navigation are automatically set based on the current url.  
+🌗 Dark/Light Mode Toggle  
+💨 Add a couple of lines to any page and it will appear in the navigation. (Check how to below)  
+🗓 A very simple blog structure because why not  
+🍪 Example for including json data on contact page  
+💜 Tailwind CSS
 
-- [eleventy-navigation](https://www.11ty.dev/docs/plugins/navigation/)
-- [eleventy-img](https://www.11ty.dev/docs/plugins/image/)
-- [eleventy-rss](https://www.11ty.dev/docs/plugins/rss/) (to get absolute URLs for social media open graph tags)
 
-## Live demo
+### [Live Demo](https://clever-newton-cbb08a.netlify.app)  
 
-- https://mandrasch.github.io/11ty-plain-bootstrap5/
+---
 
-[![Open in Gitpod](gitpod.svg)](https://gitpod.io/#https://github.com/mandrasch/11ty-plain-bootstrap5)
+## Getting Started
 
-## Usage
 
-**Install via:**
+#### 1. Clone this repo
 
-- `npm install`
+```
+git clone git@github.com:tomreinert/minimal-11ty-tailwind-starter.git mysite
+```
+#### 2. Change into the working directory
 
-**Start local development with**
+```
+cd mysite
+```
 
-- `npm run dev`
+#### 3. Install dependencies
 
-Preview runs on http://localhost:8080/.
+```
+npm install
+```
 
-**Where to edit?**
+#### 4. Work locally
+Watches for changes and serves locally on http://localhost:8080
 
-- Work with files in `src/`-folder
-- Homepage: `src/index.njk`, Config: `.eleventy.js`
-- **Don't** edit `_site/` folder (automatically generated)
+```
+npm run serve
+```
 
-**Generate a static build with**
+#### 5. Create a production build
 
-- `npm run build`
+```
+npm run build
+```
 
-_Advice: `BASE_URL` should be set as node env variable for open graph image support (they need full instead of relative URLs. You can strip them out as well in `meta.njk`. See `.github/workflows/build-deploy.yaml` for information. Currently it defaults to http://localhost:8080 if no env var is set.)_
+
+
+## How To: Navigation
+
+The top navigation is the only *feature* in this starter and lives in `/src/_includes/components/navigation.njk`.  
+
+It looks for the eleventyNavigation object in pages and adds them to the navigation bar. It also checks whether the site's url is in the currently opened url and highlights the navigation item accordingly. This even works for subpages. So if you're on `/blog/post/` the **Blog** nav item will still be active.
+
+
+### Adding links to the navigation
+Add the `eleventyNavigation` object to any page and it will appear in the navigation. Optionally set the order of your items.
+Check the [11ty docs](https://www.11ty.dev/docs/plugins/navigation/) for more information about the navigation plugin.
+
+```
+---
+eleventyNavigation:
+  key: Your Page Name
+  order: 1
+---
+```
+
+
+### Changing the navigation item styles
+The script in `/_includes/components/navigation.njk` checks if a navigation item is active and styles it accordingly.
+Let's dissect the code:
+
+```
+<a
+  href="{{ entry.url }}"
+
+  // Base styles for all navigation items
+  class="uppercase text-sm py-1 px-2 rounded inline-block
+  
+  // Active navigation items
+  {% if (entry.url in page.url and entry.url != '/') or (page.url == '/' and entry.url == '/')  %}
+    bg-black text-white
+  
+  // Default navigation items
+  {% else %}
+    text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700
+  {% endif %}">
+  {{ entry.title }}
+</a>
+```
+
+## How to: Dark mode
+
+As someone with limited development skills, it was harder than expected to implement a dark-light-mode toggle. So I dug into it and built it into the template.
+You can easily remove it if you don't need it.
+
+Per default, the site takes the user's operating system preference.
+
+Once the user toggles the mode manually, it is saved to local storage and will override system preference. 
+
+You can add a button that forgets the manually selected mode. See line 50 in `navigation.njk`:
+
+```
+<button id="forgetPref" onclick="forgetPref()">Forget</button>
+```
+
+If you don't need the dark mode toggle, do this:
+1. Remove the entire `<script>...</script>` from the head of `base.njk`
+2. Remove the entire `<button>...</button>` from `navigation.njk`
+3. Remove any classes that start with `dark:`from `base.njk` and `navigation.njk`
+
+
+
+## How To: Blog
+
+Add a page in `_src/blog/posts` and it will appear in the post list.
+
+## Images
+
+Put your images into `_src/img` and add them to your markup like so:
+```
+<img src="/img/example-image.jpg">
+```
+
+
 
 ## Credits
 
-- Big thanks to [bergwerk/11ty-mix](https://github.com/bergwerk/11ty-mix) by [@marvinhuebner](https://github.com/marvinhuebner) for example of using Laravel Mix!
-- Some icons used of https://icons.getbootstrap.com/ (included via svg inline, MIT license)
-- Inspired by https://github.com/maxboeck/eleventastic (MIT license)
-- https://5balloons.info/setting-up-bootstrap-5-workflow-using-laravel-mix-webpack/
-- Learned a lot from [Eleventy (11ty) Static HTML Theme Conversion (YouTube)](https://www.youtube.com/watch?v=z-o1W9ijUhI&list=PLOSLUtJ_J3rrJ1R1qEf8CCEpV3GgbJGNr)
-- Layout based on official bootstrap [Jumbotron Example](https://getbootstrap.com/docs/5.0/examples/)
+[Bryan L. Robinson](https://bryanlrobinson.com/blog/using-nunjucks-if-expressions-to-create-an-active-navigation-state-in-11ty/) for explaining how to create the active navigation state
 
-## Alternatives
+https://11ty.io/
 
-- https://11straps.com/
-- https://github.com/mesinkasir/eleventyblog
-- See all starters: https://www.11ty.dev/docs/starter/
-
-## Technical background:
-
-Bootstrap information for npm/sass:
-
-- https://getbootstrap.com/docs/5.2/getting-started/download/#source-files
-- https://getbootstrap.com/docs/5.2/customize/sass/
-
-Sustainable Web Design:
-
-- Comment out not needed bootstrap components in `src/scss/app.scss`
-
-## TODOs
-
-Roadmap:
-
-- [ ] Add vite support (https://www.11ty.dev/docs/server-vite/), eleventy v2 needed, see e.g. https://github.com/matthiasott/eleventy-plus-vite
-
-Ideas:
-
-- [ ] Add support for Stackblitz (https://stackblitz.com/github/mandrasch/11ty-plain-bootstrap5)
-- [ ] Add more demo content with image/gallery examples
-- [ ] Add local google fonts example
-- [ ] Improve handling of absolute URLs for open graph image information and BASE_URL settings
-- [ ] Add sitemap.xml (See https://github.com/maxboeck/eleventastic)
-- [ ] Add minimalistisc cache busting via timestamp https://rob.cogit8.org/posts/2020-10-28-simple-11ty-cache-busting/ or https://laravel.com/docs/9.x/mix#versioning-and-cache-busting (would require to read mix-manifest.json file in build step?)
-- [ ] Check a11y with WAVE, aXe, etc. or use automated workflow, e.g. pa11y https://rodneylab.com/sveltekit-accessibility-testing
-- [ ] Add PWA features (?)
-
-## License
-
-MIT license
-
-_(License is for compatibility purposes with eleventys license only. You don't have to attribute my personal additions, I did mostly boring config stuff. Please be aware that Eleventy, Bootstrap, Bootstrap Icons, Laravel Mix and eleventy plugins used are licensed as MIT license.)_
+https://tailwindcss.com
