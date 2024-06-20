@@ -32,5 +32,16 @@ body{
 }
 
 #introduction{
-    padding: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+section {
+    padding-left: 5%;
+    padding-right: 5%;
+    scroll-margin-top: 70px; /* Adjust based on your navbar height */
 }
