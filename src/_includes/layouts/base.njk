@@ -34,6 +34,33 @@
         localStorage.removeItem('theme')
         window.location.reload()
       }
+
+      ////////// Mobile menu functionality //////////
+
+      // Mobile menu dropdown
+      document.addEventListener('DOMContentLoaded', function () {
+        const menuButton = document.querySelector('.mobile-menu-button');
+        const menu = document.querySelector('.mobile-menu');
+        const nav = document.querySelector('nav');
+
+        menuButton.addEventListener('click', (event) => {
+          menu.classList.toggle('hidden');
+          event.stopPropagation(); // Prevent click event from bubbling up to the document
+        });
+
+        document.addEventListener('click', (event) => {
+          const targetElement = event.target; // clicked element
+
+          if (!nav.contains(targetElement) && !menu.classList.contains('hidden')) {
+            menu.classList.add('hidden');
+          }
+        });
+
+        // Ensure that clicking inside the menu does not close it
+        menu.addEventListener('click', (event) => {
+          event.stopPropagation();
+        });
+      });
     </script>
 
   </head>
