@@ -60,9 +60,20 @@
         menu.addEventListener('click', (event) => {
           event.stopPropagation();
         });
+
+        // Collapsable content functionality
+        document.getElementById('toggleButton').addEventListener('click', function() {
+          const content = document.getElementById('collapsibleContent');
+          if (content.classList.contains('max-h-0')) {
+            content.classList.remove('max-h-0');
+            content.classList.add('max-h-108'); // Adjust max height as needed
+          } else {
+            content.classList.remove('max-h-96');
+            content.classList.add('max-h-0');
+          }
+        });
       });
     </script>
-
   </head>
   <body class="dark:bg-zinc-800 dark:text-white">
     <div class="relative">
@@ -161,24 +172,41 @@
 </nav>
 -->
 
-    <main class="p-12 ">
-      
-      <section id="image" class="space-y-4">
-  <div>
-  </div>
-</section >
+    <main>
 
-<hr class="my-4 border-black dark:border-zinc-600">
+      
+        <section id="landing" class="space-y-4 bg-stone-100 dark:bg-zinc-700 dark:text-white">
+    <div>
+      <h1 class="text-4xl uppercase bold center mb-8">Hello! I'm Kernen Yabut!</h1>
+    </div>
+</section> 
+      
+
+      <div class="lg:p-12 lg:mx-8 md:mx-4 md:p-4 sm:mx-0 sm:p-4">
+        
 
 <section id="introduction" class="space-y-4 md:space-y-2">
-  <h2 class="text-2xl uppercase bold center mb-8">Hello, I'm Kernen.</h2>
+  <h2 class="text-2xl uppercase bold center mb-8">About Me</h2>
   <div>
-    <p>Welcome to my little site! I'm an introverted technological tinkerer who enjoys building internet stuff with a bit of code and tools (mainly C# and AI). Hailing from the growing Region of Waterloo in Ontario, Canada, I'm an aspiring software developer, eager to assist in this ever-so evolving field. </p>
-    <br/>
-    <p>
-      When I'm not tinkering with technology, I might be trying to break personal records at the gym, walking around trails around my area, expand my knowledge and skills with some reading, or volunteering at my local retirement home's fitness center.
+    <p>Welcome to my little site! I'm an introverted technological tinkerer who enjoys building internet stuff with a bit of code and tools (mainly C# and AI). Hailing from the growing Region of Waterloo in Ontario, Canada, I'm an aspiring software developer, eager to assist in this ever-so evolving field.
     </p>
     <br/>
+    <p>
+      When I'm not tinkering with technology, I might be trying to break personal records at the gym, watch the ups and downs of the stock market, expand my knowledge and skills with some reading, or volunteer at my local retirement home's fitness center.
+    </p>
+    <br/>
+  </div>
+  <button id="toggleButton" alt="Click me to expand." class="center select-none text-2xl uppercase bold center focus:outline-none">
+    How I Got Here?
+  </button>
+  <div id="collapsibleContent" class="overflow-hidden transition-all duration-500 max-h-0">
+    <p>
+      My passion and interest for technology all started when I first used my uncle's computer at the age of 3, mainly for playing games. From there as the years go on, I surfed through the early ages of the internet, enjoying websites such as Newgrounds, Neoseeker, and YouTube, and learned the programming logic and reasonings behind my favourite games. At the age of 12, I attended a web development workshop offered by Conestoga College, sparking my interest in coding. In high school, I joined our school's programming club and developed games and programs in Turing (a training programming language), and assisted with my friends' projects on GitHub.
+    </p>
+    <br/>
+    <p>
+      This hands-on experience of student dev inspired me to pursue computer science as my career path. My last years at high school involved using Java to create various applications such as games, an inventory management system, and a text editor. Afterwards, I studied at Conestoga College, where I expanded my skills in languages like C#, HTML/CSS and PHP, utilized technologies such as APIs and databases, and collaborated with others to build projects. During my gap years, I dabbling in Python and explored the emerging field of artifical intellgence and machine learning, while working as a link ambassador for my local seniors' active living center. Currently, I am now seeking a full-time role to contribute to a company's goal.
+    </p>
   </div>
 </section>
 <hr class="my-4 border-black dark:border-zinc-600">
@@ -189,8 +217,8 @@
   </div>
   <div>
     <!-- Project Grid Section -->  
-    <div id="projects" class="px-5 py-10">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+    <div id="projects" class="">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-6">
           <!-- Project Card 1 -->
           <a href="https://github.com/kernenyabut/brain-builders">
             <div class="w-full md:max-w-sm rounded overflow-hidden shadow-lg bg-zinc-100 dark:bg-zinc-800">
@@ -211,7 +239,7 @@
           </a>
         <!-- Project Card 2 -->
         <a href="https://github.com/kernenyabut/fugutive-runner">
-          <div class="max-w-sm rounded overflow-hidden shadow-lg bg-zinc-100 dark:bg-zinc-800">
+          <div class="w-full md:max-w-sm rounded overflow-hidden shadow-lg bg-zinc-100 dark:bg-zinc-800">
             <img class="w-full" src="img/FugutiveRunner.PNG" alt="Project Image">
             <div class="px-6 py-4">
               <div class="font-bold text-xl mb-2 dark:text-white">Fugitive Runner</div>
@@ -225,25 +253,44 @@
           </div>
         </a>
         <!-- Project Card 3 -->
-        <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
-          <img class="w-full" src="https://via.placeholder.com/400x200" alt="Project Image">
-          <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">Uberduck.ai</div>
-            <p class="text-gray-700 text-base">
-              Repository of various life-like voice models trained using AI.
-            </p>
+        <a href="https://github.com/kernenyabut/LootDrop">
+          <div class="w-full md:max-w-sm rounded overflow-hidden shadow-lg bg-zinc-100 dark:bg-zinc-800">
+            <img class="w-full" src="img/LootDrop.png" alt="Project Image">
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2 dark:text-white">Loot Drop</div>
+              <p class="text-base">
+                Small app that simulates the current game industry's trend of lootboxes. Final project for PROG3210.
+              </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Android</span>
+              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Java</span>
+            </div>
           </div>
-          <div class="px-6 pt-4 pb-2">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Python</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Tensorflow</span>
+        </a>
+        <!-- Project Card 4 -->
+        <a href="https://www.uberduck.ai/">
+          <div class="w-full md:max-w-sm rounded overflow-hidden shadow-lg bg-zinc-100 dark:bg-zinc-800">
+            <img class="w-full" src="img/Uberduck.webp" alt="Project Image">
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2 dark:text-white">Uberduck.ai</div>
+              <p class="text-base">
+                Repository of various life-like voice models trained using AI. Collaborated with various hobbyists to expand its library. (Before they pivoted).
+              </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Python</span>
+              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Tensorflow</span>
+            </div>
           </div>
+          <!-- Add more project cards as needed -->
         </div>
-        <!-- Add more project cards as needed -->
-      </div>
+      </a>
     </section>
   </div>
 </section>
 <hr class="my-4 border-black dark:border-zinc-600">
+
 
 <!--
 //TEMP STUFF
@@ -289,8 +336,8 @@
   </div>
 
 -->
+      </div>
 
-     
     </main>
     
     <script src="/assets/main.js"></script>
@@ -330,6 +377,11 @@
         <path d="M188.554 171.596C181.818 173.968 179.138 187.779 172.334 184.171C159.447 177.337 154.555 161.377 161.407 148.524C168.259 135.671 184.26 130.792 197.147 137.626C210.034 144.46 214.926 160.419 208.074 173.272C204.84 179.339 194.575 169.475 188.554 171.596Z" fill="#0E1116"/>
         </svg>        
     </a>
+    <a href="mailto:kernenyabut@gmail.com" target=”_blank” class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400">
+      <svg class="w-6 h-6 text-slate-500"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <rect x="3" y="5" width="18" height="14" rx="2" />  <polyline points="3 7 12 13 21 7" /></svg>
+    </a>
+
+
   </div>
   <p class="center justify-between flex-wrap border-zinc-900 ">© 2024, Kernen Yabut. Crafted with &nbsp; <a href="https://www.11ty.dev/" target=”_blank” class="font-medium text-blue-600 dark:text-blue-500 hover:underline"> Eleventy </a>  &nbsp; and  &nbsp;<a href="https://tailwindcss.com/" target=”_blank” class="font-medium text-blue-600 dark:text-blue-500 hover:underline"> Tailwind CSS</a>. </p>
 </footer>

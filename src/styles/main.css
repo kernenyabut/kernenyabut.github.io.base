@@ -10,6 +10,11 @@
     width: 100%; /* Adjust this value as needed */
 }
 
+#landing{
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
 .bold{
     font-weight: bold;
 }
@@ -29,6 +34,7 @@
 
 body{
     margin-top: 3em;
+    
 }
 
 #introduction{
@@ -44,4 +50,14 @@ section {
     padding-left: 5%;
     padding-right: 5%;
     scroll-margin-top: 70px; /* Adjust based on your navbar height */
+}
+
+.collapsible-content {
+    display: none;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+  
+.collapsible-content.open {
+    display: block;
 }

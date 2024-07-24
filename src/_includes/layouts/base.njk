@@ -60,17 +60,33 @@
         menu.addEventListener('click', (event) => {
           event.stopPropagation();
         });
+
+        // Collapsable content functionality
+        document.getElementById('toggleButton').addEventListener('click', function() {
+          const content = document.getElementById('collapsibleContent');
+          if (content.classList.contains('max-h-0')) {
+            content.classList.remove('max-h-0');
+            content.classList.add('max-h-108'); // Adjust max height as needed
+          } else {
+            content.classList.remove('max-h-96');
+            content.classList.add('max-h-0');
+          }
+        });
       });
     </script>
-
   </head>
   <body class="dark:bg-zinc-800 dark:text-white">
     {% include "../components/navigation.njk" %}
-    <main class="p-12 ">
-      
-      {{ content | safe }}
+    <main>
 
-     
+      {% if title == 'Home' %}
+        {% include "../components/lander.njk" %} 
+      {% endif %}
+
+      <div class="lg:p-12 lg:mx-8 md:mx-4 md:p-4 sm:mx-0 sm:p-4">
+        {{ content | safe }}
+      </div>
+
     </main>
     
     <script src="/assets/main.js"></script>
