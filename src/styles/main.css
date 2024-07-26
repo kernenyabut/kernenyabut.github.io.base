@@ -61,3 +61,11 @@ section {
 .collapsible-content.open {
     display: block;
 }
+
+#lander{
+    padding-block: 10%;
+    background-image: url('../img/Lander.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
