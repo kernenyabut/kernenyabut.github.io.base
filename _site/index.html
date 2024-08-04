@@ -11,12 +11,22 @@
     <link rel="manifest" href="/src/img/favicon_io/site.webmanifest"/>
 
     <script>  
+      console.log(`
+      _   _      _ _
+      | | | |    | | |
+      | |_| | ___| | | ___
+      |  _  |/ _ \\ | |/ _ \\
+      | | | |  __/ | | (_) |
+      \\_| |_/\\___|_|_|\\___/
+    `);
+  console.log("I see that you are taking a little sneak peek at inner workings of my site. Nice of you to go beyond the front-end. Surf along!");
+
       // Remove this script if you don't need the dark mode toggle  
       // On page load or when changing themes, best to add inline in `head` to avoid FOUC
       if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark')
-        
-      } else {
+      } 
+      else {
         document.documentElement.classList.remove('dark')
       }
 
@@ -178,12 +188,14 @@
         <section id="lander" class="bg-stone-100 dark:bg-zinc-700 dark:text-white">
     <div>
       <h1 class="text-4xl uppercase bold center mb-8">Hello! I'm Kernen Yabut!</h1>
+      <img class="w-full" src="../../img/Lander.jpg" alt="Project Image">
     </div>
 </section> 
       
 
       <div class="lg:p-12 lg:mx-8 md:mx-4 md:p-4 sm:mx-0 sm:p-4">
-        <section id="introduction" class="space-y-4 md:space-y-2">
+        
+<section id="introduction" class="space-y-4 md:space-y-2">
   <h2 class="text-2xl uppercase bold center mb-8">About Me</h2>
   <div>
     <p>Welcome to my little site! I'm an introverted technological tinkerer who enjoys building internet stuff with a bit of code and tools (mainly C# and AI). Hailing from the growing Region of Waterloo in Ontario, Canada, I'm an aspiring software developer, eager to assist in this ever-so evolving field.

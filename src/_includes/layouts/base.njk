@@ -11,12 +11,22 @@
     <link rel="manifest" href="/src/img/favicon_io/site.webmanifest"/>
 
     <script>  
+      console.log(`
+      _   _      _ _
+      | | | |    | | |
+      | |_| | ___| | | ___
+      |  _  |/ _ \\ | |/ _ \\
+      | | | |  __/ | | (_) |
+      \\_| |_/\\___|_|_|\\___/
+    `);
+  console.log("I see that you are taking a little sneak peek at inner workings of my site. Nice of you to go beyond the front-end. Surf along!");
+
       // Remove this script if you don't need the dark mode toggle  
       // On page load or when changing themes, best to add inline in `head` to avoid FOUC
       if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark')
-        
-      } else {
+      } 
+      else {
         document.documentElement.classList.remove('dark')
       }
 
