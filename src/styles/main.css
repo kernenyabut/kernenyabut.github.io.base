@@ -10,11 +10,6 @@
     width: 100%; /* Adjust this value as needed */
 }
 
-#landing{
-    padding-top: 60px;
-    padding-bottom: 60px;
-}
-
 .bold{
     font-weight: bold;
 }
@@ -62,15 +57,30 @@ section {
     display: block;
 }
 
+/* //// LANDER CSS //// */
+
 #lander{
-    padding-block: 10%;
-    height: 100vh;
-    
-    background-size: cover;
-    background-position: center;
+    padding-block: 5%;
+    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
     text-align: center;
+}
+
+.landerImage
+{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landerContent
+{
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
