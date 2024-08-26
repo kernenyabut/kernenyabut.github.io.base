@@ -2,10 +2,18 @@ import '../styles/main.css';
 
 /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
 function EnableMobileMenu() {
-    var x = document.getElementById("myLinks");
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "block";
+    var infoBlock = document.getElementById("myLinks");
+    var symbol = document.getElementById('toggleSymbol');
+
+    if (infoBlock.style.display === "block") {
+      infoBlock.style.display = "none";
+      symbol.textContent = '+'; // Change to plus symbol
+    } 
+    
+    else {
+      infoBlock.style.display = "block";
+      symbol.textContent = '-'; // Change to minus symbol
     }
   }
+
+// Attach the function to the button's click event

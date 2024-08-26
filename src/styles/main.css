@@ -84,3 +84,11 @@ section {
     flex-direction: column;
     justify-content: center;
 }
+
+/* //// ABOUT ME CSS //// */
+.row {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--base-gap);
+}

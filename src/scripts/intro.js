@@ -6,4 +6,4 @@ console.log(`
     | | | |  __/ | | (_) |
     \\_| |_/\\___|_|_|\\___/
   `);
-console.log("I see that you are taking a little sneak peek at inner workings of my site. Nice of you to go beyond the front-end. Surf along!");
+console.log("I see that you are taking a little sneak peek at inner workings of my site. Nice of you to go beyond the front-end and nitpick this site (provided it's ethically and under white hat intentions). Surf along!");
