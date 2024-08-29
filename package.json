@@ -10,7 +10,7 @@
     "serve": "npm-run-all clean --parallel serve:*",
     "build:webpack": "webpack --mode production",
     "build:eleventy": " eleventy",
-    "build": " run-s clean build:*"
+    "build": "npx @11ty/eleventy"
   },
   "keywords": [],
   "author": "Kernen Yabut",
