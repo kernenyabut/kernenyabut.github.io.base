@@ -16,7 +16,6 @@
   "author": "Kernen Yabut",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-navigation": "^0.1.6",
     "autoprefixer": "^10.4.7",
     "css-loader": "^6.11.0",
