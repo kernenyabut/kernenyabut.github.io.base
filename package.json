@@ -10,12 +10,13 @@
     "serve": "npm-run-all clean --parallel serve:*",
     "build:webpack": "webpack --mode production",
     "build:eleventy": " eleventy",
-    "build": "npx @11ty/eleventy"
+    "build": "eleventy"
   },
   "keywords": [],
   "author": "Kernen Yabut",
   "license": "ISC",
   "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-navigation": "^0.1.6",
     "autoprefixer": "^10.4.7",
     "css-loader": "^6.11.0",
